@@ -23,9 +23,9 @@ public class DeliveryDaoImpl extends GenericDaoImpl<Delivery> implements Deliver
 	public List<Delivery> findAllUndelivered() {
 		// TODO Auto-generated method stub
 		Date today = new Date();
-		Query query =  entityManager.createQuery("from Delivery WHERE status = :status and date(deliveredDate) = :date");
-		query.setParameter("status", 0);
-		query.setParameter("date", today, TemporalType.DATE);
+		Query query =  entityManager.createQuery("from Delivery WHERE deliveryStatus = :status");
+		query.setParameter("status", false);
+		//query.setParameter("date", today, TemporalType.DATE);
 		return query.getResultList();
 	}
 

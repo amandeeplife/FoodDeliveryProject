@@ -23,9 +23,9 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 	public List<Order> findUndeliveredOrders() {
 		// TODO Auto-generated method stub
 		Date today = new Date();
-		Query query =  entityManager.createQuery("from Order WHERE status = :status and date(deliveredDate) = :date");
-		query.setParameter("status", 0);
-		query.setParameter("date", today, TemporalType.DATE);
+		Query query =  entityManager.createQuery("from Order WHERE orderStatus = :status");
+		query.setParameter("status", false);
+		//query.setParameter("date", today, TemporalType.DATE);
 		return query.getResultList();
 	}
 
