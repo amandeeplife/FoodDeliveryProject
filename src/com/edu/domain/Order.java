@@ -2,12 +2,13 @@ package com.edu.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="food_orders")
-public class Order implements Serializable{
+public class Order implements Serializable, Comparable<Order>{
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long Id;
@@ -102,5 +103,30 @@ public class Order implements Serializable{
 		this.orderStatus = deliveryStatus;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) return false;
+		if (! (o instanceof Order)) return false;
+		
+		Order order = (Order) o;
+		if (!name.equals(order.getName())) return false;
+		if (!address.equals(order.getAddress())) return false;
+		if (!location.equals(order.getLocation())) return false;
+		if (!email.equals(order.getEmail())) return false;
+		if (!orderedDate.equals(order.getOrderedDate())) return false;
+		if (!deliveryDate.equals(order.getDeliveryDate())) return false;
+		if (!(orderStatus == order.isOrderStatus())) return false;
+		
+		return true;
+	}
 	
+	@Override 
+	public int hashCode() {
+		return Objects.hash(name, address, location, email, orderedDate, deliveryDate);
+	}
+	
+	@Override
+	public int compareTo(Order order) {
+		return this.getDeliveryDate().compareTo(order.getDeliveryDate());
+	}
 }
