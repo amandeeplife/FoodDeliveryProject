@@ -9,8 +9,7 @@ public class Main {
 public static void main(String[] args) {
 	ApplicationContext ctx = new ClassPathXmlApplicationContext("context/applicationContext.xml");
 	Order od = (Order)ctx.getBean("testOrder");
-	
- System.out.println(od.getName());
+   System.out.println(od.getName());
 	
 }
 }
