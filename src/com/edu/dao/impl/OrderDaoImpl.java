@@ -6,10 +6,12 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 import com.edu.dao.OrderDao;
 import com.edu.domain.Order;
 
- 
+@Component
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 
 	public OrderDaoImpl() {

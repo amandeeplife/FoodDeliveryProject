@@ -7,10 +7,12 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 import com.edu.dao.DeliveryDao;
 import com.edu.domain.Delivery;
  
-
+@Component
 public class DeliveryDaoImpl extends GenericDaoImpl<Delivery> implements DeliveryDao{
 
 	public DeliveryDaoImpl() {

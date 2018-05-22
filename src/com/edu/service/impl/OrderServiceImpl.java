@@ -3,12 +3,13 @@ package com.edu.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.edu.dao.OrderDao;
 import com.edu.domain.Order;
 import com.edu.service.OrderService;
 
- 
+@Component
 public class OrderServiceImpl implements OrderService{
 
 	@Autowired
