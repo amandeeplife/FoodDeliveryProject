@@ -1,7 +1,6 @@
 package com.edu.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +53,6 @@ public class Delivery implements Serializable{
 
 	public Delivery() {
 		this.status = false;
-		this.orders = new ArrayList<>();
 	}
 
 	public Date getDeliveryDate() {
