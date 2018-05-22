@@ -1,7 +1,7 @@
 package com.edu.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,12 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 @Entity
+@Table(name="food_deliveries")
 public class Delivery implements Serializable{
 	
 	@Id
@@ -31,14 +33,18 @@ public class Delivery implements Serializable{
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="delivery_id")
-	private List<Delivery> deliveries;
+	private List<Order> orders;
 	
-	public List<Delivery> getDeliveries() {
-		return deliveries;
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	public void setDeliveries(List<Delivery> deliveries) {
-		this.deliveries = deliveries;
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
+	public void addOrder(Order order) {
+		this.orders.add(order);
 	}
 
 	public void setId(Long id) {

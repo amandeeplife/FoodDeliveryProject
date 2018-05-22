@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
+@Table(name="food_orders")
 public class Order implements Serializable{
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
@@ -29,11 +30,11 @@ public class Order implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date deliveryDate;
 	
-	@Column(name="status")
-	private boolean deliveryStatus;
+	@Column(name="orderStatus")
+	private boolean orderStatus;
 	
 	public Order() {
-		this.deliveryStatus = false;
+		this.orderStatus = false;
 		this.orderedDate = new Date();
 	}
 
@@ -93,12 +94,12 @@ public class Order implements Serializable{
 		this.deliveryDate = deliveryDate;
 	}
 
-	public boolean isDeliveryStatus() {
-		return deliveryStatus;
+	public boolean isOrderStatus() {
+		return orderStatus;
 	}
 
-	public void setDeliveryStatus(boolean deliveryStatus) {
-		this.deliveryStatus = deliveryStatus;
+	public void setOrderStatus(boolean deliveryStatus) {
+		this.orderStatus = deliveryStatus;
 	}
 	
 	

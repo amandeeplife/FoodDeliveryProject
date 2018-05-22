@@ -2,14 +2,18 @@ package com.edu.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.edu.dao.OrderDao;
 import com.edu.domain.Order;
 import com.edu.service.OrderService;
 
-@Component
+@Service
+@Transactional
 public class OrderServiceImpl implements OrderService{
 
 	@Autowired
