@@ -16,8 +16,9 @@ public class DeliveryScheduler {
 	@Autowired
 	public DeliveryService deliveryService;
 	
-	@Scheduled(cron="0,0,/1,*,*,*")
-	public void update() {
+	@Scheduled(fixedDelay = 10000)
+	public void publish() {
+		System.out.println("We are in delivery scheduler");
 		List<Delivery> deliveries = deliveryService.findAllUndelivered();
 		Date date = new Date();
 		for (Delivery del : deliveries) {

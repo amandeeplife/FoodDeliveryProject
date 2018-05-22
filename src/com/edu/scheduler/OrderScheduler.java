@@ -26,8 +26,9 @@ public class OrderScheduler {
 	@Autowired
 	DeliveryService deliveryService;
 	
-	@Scheduled(cron = "0,0,*/3,*,*,*")
+	@Scheduled(fixedDelay = 50000, initialDelay = 1000)
 	public void update() {
+		//System.out.println("We are in order scheduler");
 		List<Order> orders = orderService.findAllUndelivered();
 		Map<String, List<Order>> groupOrders = new HashMap<>();
 		
