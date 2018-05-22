@@ -17,6 +17,7 @@ public class OrderServiceTest {
 	public void saveOrder(){
 		Order od  = new Order();
 		od.setName("pen");
+		od.setEmail("aman.yahway@gmail.com");
 		od.setId(1);
 		os.save(od);
 	}
@@ -26,5 +27,6 @@ public class OrderServiceTest {
     public void getOrder(){
 		Order test = os.find((long) 1);
         assertEquals(test.getName(), "pen");
+        assertEquals(test.getEmail(), "aman.yahway@gmail.com");
     }
 }
