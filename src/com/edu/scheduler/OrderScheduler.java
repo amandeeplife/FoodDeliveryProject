@@ -26,7 +26,7 @@ public class OrderScheduler {
 	@Autowired
 	DeliveryService deliveryService;
 	
-	@Scheduled(cron = "0,0,*/3,*,*,*")
+	@Scheduled(fixedDelay = 10000)
 	public void update() {
 		List<Order> orders = orderService.findAllUndelivered();
 		Map<String, List<Order>> groupOrders = new HashMap<>();

@@ -16,8 +16,8 @@ public class DeliveryScheduler {
 	@Autowired
 	public DeliveryService deliveryService;
 	
-	@Scheduled(cron="0,0,/1,*,*,*")
-	public void update() {
+	@Scheduled(fixedDelay = 50000)
+	public void publish() {
 		List<Delivery> deliveries = deliveryService.findAllUndelivered();
 		Date date = new Date();
 		for (Delivery del : deliveries) {
