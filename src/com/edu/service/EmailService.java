@@ -1,4 +1,4 @@
-package com.edu.emailservice;
+package com.edu.service;
 
 import com.edu.domain.Order;
 

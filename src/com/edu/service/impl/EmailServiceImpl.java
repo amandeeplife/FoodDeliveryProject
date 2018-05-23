@@ -1,4 +1,4 @@
-package com.edu.emailserviceImpl;
+package com.edu.service.impl;
 
 import java.util.Properties;
 
@@ -11,7 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import com.edu.domain.Order;
-import com.edu.emailservice.EmailService;
+import com.edu.service.EmailService;
 
 public class EmailServiceImpl implements EmailService {
 public static final String MAIL_SERVER = "smtp.gmail.com";
