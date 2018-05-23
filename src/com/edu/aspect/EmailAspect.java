@@ -1,5 +1,4 @@
 package com.edu.aspect;
-
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -40,7 +39,6 @@ public class EmailAspect {
 		    System.out.println("Order Name: " + od.getName());
 		    System.out.println("Order Date: " + od.getOrderedDate());
 		    System.out.println("Delivery Date: " + od.getDeliveryDate());
-
 		  
 	  }
 }
