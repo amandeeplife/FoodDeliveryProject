@@ -4,36 +4,43 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.edu.domain.Order;
 import com.edu.service.OrderService;
 import com.edu.service.impl.OrderServiceImpl;
-
+@ContextConfiguration("application-context-test.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class OrderServiceTest {
-	@Autowired
+   @Resource	
 	OrderService orderService = new OrderServiceImpl();
-	@Test
-    public void testFindById()
-    {
-        Order order = orderService.find((long)1);
-
-        assertEquals("Bike", order.getName());
-        assertEquals("john.smith@mailinator.com", order.getEmail());
-        
-        return;
-    }
-    @Test
+	@Before
+	public void saveData(){
+		Order order = new Order();
+		order.setEmail("aman.yahway@gmail.com");
+		order.setName("Bike");
+ 		orderService.save(order);
+	}
+ 
+	 	 @Test
+ 	     @Rollback(true)
     public void testSave()
     {
     	Order order = new Order();
     	order.setEmail("aman.yahway@gmail.com");
     	order.setName("Bike");
     	orderService.save(order);
-    	
+System.out.println(orderService.find((long)4));
         Long id = order.getId();
         Assert.assertNotNull(id);
         Order newOrder = orderService.find(id);
@@ -44,7 +51,9 @@ public class OrderServiceTest {
         return;
     }
 
-    @Test
+	 	 @Test
+	     @Transactional
+	     @Rollback(true)
     public void testFindAll()
     {
     	Order order = new Order();
@@ -59,7 +68,7 @@ public class OrderServiceTest {
     	orderService.save(order2);
 
         List<Order> orders = orderService.findAll();
-        Assert.assertEquals(2, orders.size());
+        Assert.assertEquals(3, orders.size());
         Order orderFromlist = orders.get(0);
 
         Assert.assertEquals("Bike", orderFromlist.getName());

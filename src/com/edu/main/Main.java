@@ -9,9 +9,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
 import com.edu.domain.Order;
-import com.edu.emailservice.EmailService;
-import com.edu.emailserviceImpl.EmailServiceImpl;
+import com.edu.service.EmailService;
 import com.edu.service.OrderService;
+import com.edu.service.impl.EmailServiceImpl;
 
 @Component
 @EnableScheduling

@@ -73,6 +73,11 @@ public class Delivery implements Serializable{
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
 	
 	
 }
