@@ -12,14 +12,15 @@ import com.edu.domain.Order;
 import com.edu.service.EmailService;
 import com.edu.service.OrderService;
 import com.edu.service.impl.EmailServiceImpl;
+import com.edu.service.impl.OrderServiceImpl;
 
 @Component
 @EnableScheduling
 public class Main {
 	
 	@Autowired
-	private OrderService os;
-	EmailService es = new EmailServiceImpl();
+	private OrderService os = new OrderServiceImpl();
+	EmailServiceImpl es = new EmailServiceImpl();
 	
 	public static void main(String[] args)  {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("context/applicationContext.xml");
@@ -39,7 +40,8 @@ public class Main {
 		od1.setOrderStatus(false);
 		
 		//OrderService os = new OrderServiceImpl();
-		os.save(od1);
-		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
+		//os.save(od1);
+		 
+ 		es.sendOrderPlacementEmail("h@Gmail.com",od1);
 	}
 }
