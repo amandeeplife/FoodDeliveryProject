@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JMSOrderListnerAspect {
 	  
-	  @Pointcut("execution(* com.edu.listener..onMessage(message))")
+	  @Pointcut("target(com.edu.listener.JMSOrderListner)")
 	  
 	  public void testOrderListner() {}
 

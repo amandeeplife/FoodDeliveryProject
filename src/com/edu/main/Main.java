@@ -40,6 +40,6 @@ public class Main {
 		
 		//OrderService os = new OrderServiceImpl();
 		os.save(od1);
-		es.sendOrderPlacementEmail(od1.getEmail(),od1);
+		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 	}
 }
