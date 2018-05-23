@@ -36,6 +36,11 @@ public class OrderBuilder {
 		return this;
 	}
 	
+	public OrderBuilder withLocation(String location) {
+		this.order.setLocation(location);
+		return this;
+	}
+	
 	public Order builder() {
 		return order;
 	}
