@@ -8,7 +8,7 @@ import javax.jms.ObjectMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.edu.domain.Order;
-import com.edu.emailservice.EmailService;
+import com.edu.service.EmailService;
 import com.edu.service.OrderService;
 
  

@@ -13,7 +13,7 @@ import com.edu.domain.Order;
 @Component
 public class EmailAspect {
 	  
-	  @Pointcut("execution(* com.edu.emailservice..*(..))")
+	  @Pointcut("execution(* com.edu.service..*(..))")
 	  public void testEmail() {}
 
 	  @Pointcut("args(to,od)")
