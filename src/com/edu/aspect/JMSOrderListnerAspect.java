@@ -1,6 +1,5 @@
 package com.edu.aspect;
 
-import javax.jms.Message;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -13,14 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class JMSOrderListnerAspect {
 	  
-	  @Pointcut("execution(* com.edu.listener..*(..))")
+	  @Pointcut("execution(* com.edu.listener..onMessage(message))")
 	  public void testOrderListner() {}
 
-	  @Pointcut("args(message)")
-	  public void argsMethod(Message message) {}
-	  
-	  @Before("testOrderListner() && argsMethod(message)")           
-	  public void testOrderListnerExecution(JoinPoint joinPoint, Message message) {
+	  @Before("testOrderListner()")           
+	  public void testOrderListnerExecution(JoinPoint joinPoint) throws Throwable {
 	
 		  Logger log = Logger.getLogger("");
 		  log.info("   **********    JMS ORDER LISTNER ASPECT CLASS : " + joinPoint.getSignature().getName() + "    **********");
