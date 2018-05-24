@@ -53,7 +53,7 @@ public class Main {
 	//	es.testAOP(od1);
 		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 
-		es.sendOrderPlacementEmail("h@Gmail.com",od1);
+		es.sendDeliveryConfirmationEmail("aman.yahway@gmail.com",od1);
 	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
  
 
