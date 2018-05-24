@@ -20,6 +20,6 @@ public class OrderAspect {
 	public void doOrder(JoinPoint joinPoint) {
 		  Logger log = Logger.getLogger("");
 		  log.info("   **********     ORDER ASPECT CLASS : " + joinPoint.getSignature().getName() + "    **********");
-		  System.out.println("In the order asppect class******************");
+		  //System.out.println("In the order asppect class******************");
 	}
 }

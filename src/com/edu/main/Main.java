@@ -15,7 +15,7 @@ import com.edu.service.impl.EmailServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;
 
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class Main {
 	
 	@Autowired
@@ -41,7 +41,7 @@ public class Main {
 		
 		//OrderService os = new OrderServiceImpl();
 		os.save(od1);
-		es.testAOP();
-	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
+		es.testAOP(od1);
+		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 	}
 }

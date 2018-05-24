@@ -23,7 +23,7 @@ public static void main(String[] args) {
  	
 }
 
-public void testAOP() {
+public void testAOP(Order od) {
 	System.out.println("****************Test AOP*****************");
 }
 public void sendOrderPlacementEmail(String to,Order od) {

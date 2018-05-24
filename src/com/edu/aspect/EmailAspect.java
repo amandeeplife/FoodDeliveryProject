@@ -15,9 +15,11 @@ public class EmailAspect {
 	  	  
 	  @Pointcut("execution(* com.edu.service..*(..))")
 	  public void testEmail() {}
+	  @Pointcut("args(od)")
+	  public void argsMethod(Order od) {}
 
-	  @Before("testEmail()")           
-	  public void testEmailExecution(JoinPoint joinPoint) {
+	  @Before("testEmail() && argsMethod(od)")           
+	  public void testEmailExecution(JoinPoint joinPoint, Order od) {
 		  
 		  Logger log = Logger.getLogger("");
 		  log.info("   **********    EMAIL ASPECT CLASS : " + joinPoint.getSignature().getName() + "    **********");
@@ -28,7 +30,15 @@ public class EmailAspect {
 			joinPoint.getSignature().getName() + "    **********");
 		    
 		    
-
+//		    System.out.println();
+//		    System.out.println( "**********    EMAIL SENT TO ************");
+//		    System.out.println("Email: " + to);
+		    
+		    System.out.println();
+		    System.out.println( "**********    OREDER INFORMATION ************");
+		    System.out.println("Order Name: " + od.getName());
+		    System.out.println("Order Date: " + od.getOrderedDate());
+		    System.out.println("Delivery Date: " + od.getDeliveryDate());
 		  
 	  }
 //	  @Pointcut("execution(* com.edu.service..*(..))")
