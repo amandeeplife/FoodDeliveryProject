@@ -23,7 +23,9 @@ public static void main(String[] args) {
  	
 }
 
-
+public void testAOP() {
+	System.out.println("****************Test AOP*****************");
+}
 public void sendOrderPlacementEmail(String to,Order od) {
 	String toAddr = to;
 	

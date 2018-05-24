@@ -1,4 +1,4 @@
-package com.edu.service;
+package com.edu.service.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.edu.domain.Delivery;
 import com.edu.domain.Order;
+import com.edu.service.DeliveryService;
 import com.edu.service.OrderService;
 import com.edu.service.impl.DeliveryServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;

@@ -1,4 +1,4 @@
-package com.edu.service;
+package com.edu.service.test;
 
 import static org.junit.Assert.assertEquals;
 
