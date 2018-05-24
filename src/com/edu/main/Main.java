@@ -1,6 +1,7 @@
  package com.edu.main;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -15,13 +16,15 @@ import com.edu.service.impl.EmailServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;
 
 @Component
-//@EnableScheduling
+@EnableScheduling
 public class Main {
 	
 	@Autowired
-	private OrderService os=new OrderServiceImpl();
+ 	private OrderService os = new OrderServiceImpl();
 	EmailService es = new EmailServiceImpl();
-	
+ 
+	 
+ 	
 	public static void main(String[] args)  {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("context/applicationContext.xml");
 		// Order od = (Order)ctx.getBean("testOrder");
@@ -40,8 +43,19 @@ public class Main {
 		od1.setOrderStatus(false);
 		
 		//OrderService os = new OrderServiceImpl();
+ 
+		//os.save(od1);
+		 
+ 		
+ 
 		os.save(od1);
-		es.testAOP(od1);
+
+	//	es.testAOP(od1);
 		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
+
+		es.sendOrderPlacementEmail("h@Gmail.com",od1);
+	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
+ 
+
 	}
 }

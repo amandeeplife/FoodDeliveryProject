@@ -2,10 +2,10 @@ package com.edu.service.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,44 +26,31 @@ import com.edu.service.DeliveryService;
 import com.edu.service.OrderService;
 import com.edu.service.impl.DeliveryServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;
-@ContextConfiguration("application-context-test.xml")
+@ContextConfiguration("../../../resources/application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DeliveryServiceTest {
-
-	Date deliveryDate;
-	
-   @Resource	
+	@Resource	
 	DeliveryService deliveryService = new DeliveryServiceImpl();
-	@Before
-	public void saveData() throws ParseException{
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-		String dateInString = "31-08-1982 10:20:56";
-		deliveryDate = sdf.parse(dateInString);	
-		 
-	}
- 
+	Calendar myCalendar = new GregorianCalendar(2018, 2, 11);
+	Date deliveryDate = myCalendar.getTime();
+	
 	 	 @Test
  	     @Rollback(true)
     public void testSave()
     {
-    	Delivery delivery = new Delivery();
-    	Order od = new Order();
-    	Order od2 = new Order();
-    	List<Order> orders= new ArrayList<Order>();
-    	orders.add(od);
-    	orders.add(od2);
-    	delivery.setDeliveryDate(deliveryDate);
-    	delivery.setOrders(orders);
-    	deliveryService.save(delivery);
-        Long id = delivery.getId();
-        Assert.assertNotNull(id);
-        Delivery newDelivery = deliveryService.find(id);
-
-        Assert.assertEquals("31-08-1982 10:20:56", newDelivery.getDeliveryDate());
-        Assert.assertEquals("2", newDelivery.getOrders().size());
+	 		
+	 	 	Delivery delivery = new Delivery();
+	 	 	delivery.setDeliveryDate(deliveryDate);
+	 	 	deliveryService.save(delivery);
+	 	    List<Delivery> deliveries = deliveryService.findAll();
+	 	    
+	 	    Assert.assertEquals(1,deliveries.size());
  
         return;
     }
+	 	 
+	 	 
+	 	
 
 	 	 @Test
 	     @Transactional
@@ -71,25 +58,50 @@ public class DeliveryServiceTest {
     public void testFindAll()
     {
 	 		Delivery delivery = new Delivery();
-	 		Order od = new Order();
-	 		od.setName("book");
-	    	Order od2 = new Order();
-	    	List<Order> orders= new ArrayList<Order>();
-	    	orders.add(od);
-	    	orders.add(od2);
-	    	delivery.setOrders(orders);
-	    	
-	    	Delivery delivery2 = new Delivery();
-	    	deliveryService.save(delivery);
-	    	deliveryService.save(delivery2);
+	 	 	delivery.setDeliveryDate(deliveryDate);
+	 	 	
+	 	 	Delivery delivery2 = new Delivery();
+	 	 	delivery2.setDeliveryDate(deliveryDate);
+  
+	 	 	deliveryService.save(delivery);
+	 	 	deliveryService.save(delivery2);
+	 	 	
+	 	 	List<Delivery> deliveries = deliveryService.findAll();
+	 	 	Assert.assertEquals(2, deliveries.size());
+	 	 	Delivery deliveryFromList = deliveries.get(0);
 
-        List<Delivery> deliveries = deliveryService.findAll();
-        Assert.assertEquals(2, deliveries.size());
-        Delivery deliveryFromList = deliveries.get(0);
-
-        Assert.assertEquals("book", deliveryFromList.getOrders().get(0).getName());
-        
+	 	    Assert.assertEquals(2,deliveries.size());
          
         return;
     }
+	 	 
+	 	@Test
+		@Transactional
+		@Rollback(true)
+	   public void findOne()
+	   {
+	 		
+	 		Delivery delivery = new Delivery();
+	 	 	delivery.setDeliveryDate(deliveryDate);
+	 	 	Order order = new Order();
+	 	 	order.setName("cake");
+	 	 	List<Order> orders = new ArrayList<Order>();
+	 	 	orders.add(order);
+	 	 	delivery.setOrders(orders);
+	 	 	
+	 	 	
+	 	 	Delivery delivery2 = new Delivery();
+	 	 	delivery2.setDeliveryDate(deliveryDate);
+  
+	 	 	deliveryService.save(delivery);
+	 	 	deliveryService.save(delivery2);
+	 	 	
+	 	 	List<Delivery> deliveries = deliveryService.findAll();
+	 	 	
+	 	 	
+	    Assert.assertEquals("cake", deliveries.get(1).getOrders().get(0).getName());
+	    return;
+	    
+	   }
+	 	 
 }

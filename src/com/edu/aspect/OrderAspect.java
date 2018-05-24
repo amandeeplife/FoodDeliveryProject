@@ -10,16 +10,15 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class OrderAspect {
+	
+	
 	@Pointcut("execution(* com.edu.service..*(..))")
 	public void appMethod() {}
 	
-	@Pointcut("args(Object)")
-	public void argsMethod() {}
 	
 	@Before("appMethod()")
 	public void doOrder(JoinPoint joinPoint) {
-		  Logger log = Logger.getLogger("");
-		  log.info("   **********     ORDER ASPECT CLASS : " + joinPoint.getSignature().getName() + "    **********");
-		  //System.out.println("In the order asppect class******************");
+		System.out.println("*** ORDER ASPECT--->OrderAspect.doOrderService()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
+				joinPoint.getSignature().getName()+ " ***");
 	}
 }

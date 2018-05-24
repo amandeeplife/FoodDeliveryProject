@@ -28,7 +28,7 @@ public void testAOP(Order od) {
 }
 public void sendOrderPlacementEmail(String to,Order od) {
 	String toAddr = to;
-	
+	sendOrder(od);
 	String subject = "Order Placement Confirmation";
 	
 	String message = "Dear Customer, This is to let you know that "
@@ -65,7 +65,9 @@ public void sendOrderPlacementEmail(String to,Order od) {
 	
 }
 
-
+public void sendOrder(Order od){
+	
+}
 public void sendDeliveryConfirmationEmail(String to,Order od) {
 	String toAddr = to;
 	
