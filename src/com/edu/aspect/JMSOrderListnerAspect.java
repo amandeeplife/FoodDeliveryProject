@@ -21,6 +21,7 @@ public class JMSOrderListnerAspect {
 	
 		  Logger log = Logger.getLogger("");
 		  log.info("   **********    JMS ORDER LISTNER ASPECT CLASS : " + joinPoint.getSignature().getName() + "    **********");
-		  
+		  System.out.println("********** --->JMSOrderListnerAspect()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
+					joinPoint.getSignature().getName()+  " **********");
 	  }
 }

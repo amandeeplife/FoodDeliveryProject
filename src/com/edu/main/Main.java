@@ -3,6 +3,9 @@
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import javax.jms.Message;
+import javax.jms.ObjectMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,6 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
 import com.edu.domain.Order;
+import com.edu.listener.JMSOrderListner;
 import com.edu.service.EmailService;
 import com.edu.service.OrderService;
 import com.edu.service.impl.EmailServiceImpl;
@@ -56,6 +60,8 @@ public class Main {
 		es.sendOrderPlacementEmail("h@Gmail.com",od1);
 	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
  
-
+//		JMSOrderListner ol= new JMSOrderListner();
+//		Message msg=
+//		ol.onMessage(msg);
 	}
 }
