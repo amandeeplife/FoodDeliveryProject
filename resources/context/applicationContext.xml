@@ -12,7 +12,9 @@
 
 	<context:property-placeholder
 		location="classpath:application.properties" />
-
+<!--    <import resource="classpath:jmsOrderListnerContext.xml" /> -->
+  
+  
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -30,7 +32,13 @@
 			</props>
 		</property>
 	</bean>
+    <bean id="headquarter" class="com.edu.listener.JMSOrderListner"/>
 
+    <jms:listener-container container-type="default"
+                            connection-factory="connectionFactory" acknowledge="auto">
+        <jms:listener destination="queue.order" ref="headquarter" method="onMessage" />
+    </jms:listener-container>
+    
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"

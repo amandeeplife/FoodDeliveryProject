@@ -23,7 +23,6 @@ public static void main(String[] args) {
  	
 }
 
-
 public void sendOrderPlacementEmail(String to,Order od) {
 	String toAddr = to;
 	

@@ -20,7 +20,7 @@ import com.edu.domain.Delivery;
 import com.edu.domain.Order;
 import com.edu.service.OrderService;
 import com.edu.service.impl.OrderServiceImpl;
-@ContextConfiguration("../../../resources/application-context-test.xml")
+@ContextConfiguration("../../../././../resources/application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class OrderServiceTest {
 	@Resource	
@@ -38,8 +38,9 @@ public class OrderServiceTest {
 	 	    Long id = order.getId();
 	 	    Assert.assertNotNull(id);
 	 	    System.out.println(orderService.find(order.getId())+"Checking ");
-	 	    
-	 	    Order newOrder = orderService.find(id);
+	 	    List<Order> orders = orderService.findAll();
+
+	 	    Order newOrder = orders.get(0);
 	 	    Assert.assertEquals("pizza", newOrder.getName());
  
         return;

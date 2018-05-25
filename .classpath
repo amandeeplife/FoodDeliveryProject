@@ -13,5 +13,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="bin/mockrunner-ejb.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-jca.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-jdbc.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-jms.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-servlet.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-struts.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner-tag.jar"/>
+	<classpathentry kind="lib" path="bin/mockrunner.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

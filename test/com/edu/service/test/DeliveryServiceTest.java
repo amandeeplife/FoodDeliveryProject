@@ -26,7 +26,7 @@ import com.edu.service.DeliveryService;
 import com.edu.service.OrderService;
 import com.edu.service.impl.DeliveryServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;
-@ContextConfiguration("../../../resources/application-context-test.xml")
+@ContextConfiguration("../../../././../resources/application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DeliveryServiceTest {
 	@Resource	

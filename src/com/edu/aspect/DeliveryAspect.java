@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class OrderAspect {
+public class DeliveryAspect {
 	
 	
 	@Pointcut("execution(* com.edu.service..save(..))")
@@ -17,14 +17,14 @@ public class OrderAspect {
 	
 	@Before("saveMethod()")
 	public void doSaving(JoinPoint joinPoint) {
-		System.out.println("********** ORDER ASPECT--->OrderAspect.doSaving()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
+		System.out.println("********** DELIVERY ASPECT--->DeliveryAspect.doSaving()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
 				joinPoint.getSignature().getName()+ " **********");
 	}
 	
 
 	@Before("execution(* com.edu.service..update(..))")
 	public void doUpdating(JoinPoint joinPoint) {
-		System.out.println("********** ORDER ASPECT--->OrderAspect.doUpdating()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
+		System.out.println("********** DELIVERY ASPECT--->DeliveryAspect.doUpdating()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
 				joinPoint.getSignature().getName()+ " **********");
 	}
 	
@@ -33,7 +33,7 @@ public class OrderAspect {
 	
 	@Before("deleteMethod()")
 	public void doDeleting(JoinPoint joinPoint) {
-		System.out.println("********** ORDER ASPECT--->OrderAspect.doDeleting()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
+		System.out.println("********** DELIVERY ASPECT--->DeliveryAspect.doDeleting()  :" + joinPoint.getSignature().getDeclaringTypeName() + "." +
 				joinPoint.getSignature().getName()+ " *********");
 	}
 }

@@ -3,15 +3,22 @@
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import javax.jms.Message;
+import javax.jms.ObjectMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
+import com.edu.domain.Delivery;
 import com.edu.domain.Order;
+import com.edu.listener.JMSOrderListner;
+import com.edu.service.DeliveryService;
 import com.edu.service.EmailService;
 import com.edu.service.OrderService;
+import com.edu.service.impl.DeliveryServiceImpl;
 import com.edu.service.impl.EmailServiceImpl;
 import com.edu.service.impl.OrderServiceImpl;
 
@@ -42,20 +49,25 @@ public class Main {
 		od1.setOrderedDate(new Date());
 		od1.setOrderStatus(false);
 		
+		es.sendOrderPlacementEmail(od1.getEmail(),od1);
+
 		//OrderService os = new OrderServiceImpl();
  
 		//os.save(od1);
 		 
  		
- 
+ Delivery del = new Delivery();
+ 	DeliveryService ds = new DeliveryServiceImpl();
+ 	//ds.save(del);
 		os.save(od1);
 
 	//	es.testAOP(od1);
 		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 
-		es.sendDeliveryConfirmationEmail("aman.yahway@gmail.com",od1);
-	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
+		//es.sendDeliveryConfirmationEmail("aman.yahway@gmail.com",od1);
  
-
+//		JMSOrderListner ol= new JMSOrderListner();
+//		Message msg=null;
+//		ol.onMessage(msg);
 	}
 }

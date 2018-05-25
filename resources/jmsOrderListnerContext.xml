@@ -12,6 +12,6 @@
 
     <jms:listener-container container-type="default"
                             connection-factory="connectionFactory" acknowledge="auto">
-        <jms:listener destination="queue.warehouse" ref="headquarter" method="onMessage" />
+        <jms:listener destination="queue.order" ref="headquarter" method="onMessage" />
     </jms:listener-container>
 </beans>
