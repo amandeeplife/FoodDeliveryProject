@@ -46,18 +46,24 @@ public class Main {
 		od1.setOrderedDate(new Date());
 		od1.setOrderStatus(false);
 		
+		
+		
+		os.save(od1);
+		
+		es.sendOrderPlacementEmail("h@Gmail.com",od1);
+		
+
 		//OrderService os = new OrderServiceImpl();
  
 		//os.save(od1);
 		 
  		
  
-		os.save(od1);
-
+	
 	//	es.testAOP(od1);
 		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 
-		es.sendOrderPlacementEmail("h@Gmail.com",od1);
+	
 	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
  
 //		JMSOrderListner ol= new JMSOrderListner();
