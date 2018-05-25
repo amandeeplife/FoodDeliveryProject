@@ -15,6 +15,7 @@ public class EmailAspect {
 	  	  
 	  @Pointcut("execution(* com.edu.service..*(..))")
 	  public void testEmail() {}
+	  
 	  @Pointcut("args(od)")
 	  public void argsMethod(Order od) {}
 

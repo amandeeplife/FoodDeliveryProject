@@ -49,23 +49,31 @@ public class Main {
 		od1.setOrderedDate(new Date());
 		od1.setOrderStatus(false);
 		
-		es.sendOrderPlacementEmail(od1.getEmail(),od1);
-
-		//OrderService os = new OrderServiceImpl();
  
-		//os.save(od1);
-		 
- 		
- Delivery del = new Delivery();
- 	DeliveryService ds = new DeliveryServiceImpl();
- 	//ds.save(del);
+		es.sendOrderPlacementEmail(od1.getEmail(),od1);
+ 
+		
+		
 		os.save(od1);
+		
+		es.sendOrderPlacementEmail("h@Gmail.com",od1);
+		
+ Delivery del = new Delivery();
+  	//ds.save(del);
+	 
 
 	//	es.testAOP(od1);
 		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
 
-		//es.sendDeliveryConfirmationEmail("aman.yahway@gmail.com",od1);
  
+ 
+	
+	//	es.testAOP(od1);
+		//es.sendOrderPlacementEmail(od1.getEmail(),od1);
+
+	
+	//	es.sendOrderPlacementEmail(od1.getEmail(),od1);
+  
 //		JMSOrderListner ol= new JMSOrderListner();
 //		Message msg=null;
 //		ol.onMessage(msg);
